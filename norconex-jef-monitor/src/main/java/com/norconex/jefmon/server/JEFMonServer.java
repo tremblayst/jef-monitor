@@ -209,6 +209,13 @@ public class JEFMonServer {
             locales[i] = LocaleUtils.toLocale(localeStrings[i].trim());
         }
         
+        String po = System.getProperty("portoverride");
+        
+        if(po != null && po.length() > 0)
+        {
+        	props.setInt("port", Integer.valueOf(po));
+        }
+        
         final JEFMonServer server = new JEFMonServer(
                 props.getInt("port", 80), 
                 props.getBoolean("https", false),
